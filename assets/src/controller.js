@@ -3,6 +3,11 @@ export default class Controller {
         this.game = game;
         this.view = view;
 
+        setInterval(() => {
+            this.game.moveTetrominoDown();
+            this.view.renderMainScreen(this.game.state());
+        }, 1000)
+
         document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
         this.view.renderStartScreen();
