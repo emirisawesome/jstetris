@@ -1,2 +1,2 @@
 # jstetris 
-# i need lern f$kig javascript
+# i need learn f$kig javascript
