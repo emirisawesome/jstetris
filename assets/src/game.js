@@ -6,12 +6,9 @@ export default class Game {
         '4': 1200,
     }
 
-    score = 0;
-    lines = 19;
-    playfield = this.generatePlayfield();
-
-    activeTetromino = this.generateTetromino();
-    nextTetromino = this.generateTetromino();
+    constructor(){
+        this.reset()
+    }
 
     get level() {
         return Math.floor(this.lines * 0.1);
@@ -47,9 +44,20 @@ export default class Game {
             score: this.score,
             lines: this.lines,
             nextTetromino: this.nextTetromino,
-            playfield
+            playfield,
+            gameOver: this.topOut
         }
     }
+
+    reset(){
+        this.score = 0;
+        this.topOut = false;
+        this.lines = 19;
+        this.playfield = this.generatePlayfield();
+        this.activeTetromino = this.generateTetromino();
+        this.nextTetromino = this.generateTetromino();
+    }
+
     generatePlayfield(){
        const playfield = [];
 
@@ -148,6 +156,10 @@ export default class Game {
     }
 
     moveTetrominoDown(){
+        if (this.topOut) {
+            return
+        }
+
         this.activeTetromino.y += 1;
 
         if (this.collision()) {
@@ -156,6 +168,9 @@ export default class Game {
             const clearedLines = this.clearLines();
             this.updateScore(clearedLines)
             this.updateTetromino()
+        }
+        if (this.collision()) {
+            this.topOut = true;
         }
     }
 

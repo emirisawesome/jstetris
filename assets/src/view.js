@@ -51,17 +51,20 @@ export default class View {
     }
 
     renderStartScreen(){
-        this.context.fillStyle = 'black';
-        this.context.font = '10px ';
+        this.context.fillStyle = '#000000';
+        this.context.fillRect(0,0, this.width, this.height);
+        this.context.fillStyle = '#ffffff';
+        this.context.font = '18px Arial';
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.fillText('Press Enter to start', this.width / 2, this.height / 2)
 
     }
     renderPauseScreen(){
-        this.context.fillStyle = 'rgba(0,0,0,0.7)';
-        this.context.fillRect(0,0, this.width, this.height)
-        this.context.font = '10px ';
+        this.context.fillStyle = '#000000';
+        this.context.fillRect(0,0, this.width, this.height);
+        this.context.fillStyle = '#ffffff';
+        this.context.font = '18px Arial';
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.fillText('Press Enter to resume', this.width / 2, this.height / 2)
@@ -69,13 +72,15 @@ export default class View {
     }
     renderEndScreen({score}){
         this.clearScreen
-        this.context.fillStyle = 'rgba(0,0,0,0.7)';
-        this.context.fillRect(0,0, this.width, this.height)
-        this.context.font = '16px ';
+        this.context.fillStyle = '#000000';
+        this.context.fillRect(0,0, this.width, this.height);
+        this.context.fillStyle = '#ffffff';
+        this.context.font = '18px Arial';
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
-        this.context.fillText('GAME OVER', this.width / 2, this.height / 2 - 48);
+        this.context.fillText('GAME OVER', this.width / 2, this.height / 2 - 40);
         this.context.fillText(`Score ${score}`, this.width / 2, this.height / 2);
+        this.context.fillText(`Press Enter to restart`, this.width / 2, this.height / 2 + 40);
 
     }
 
@@ -100,7 +105,7 @@ export default class View {
         this.context.textAlign = 'start';
         this.context.textBaseline = 'top';
         this.context.fillStyle = 'blue';
-        this.context.font = '24px "Roboto"';
+        this.context.font = '24px Arial';
 
         this.context.fillText(`level - ${level}`, this.panelX, this.panelY + 0);
         this.context.fillText(`score - ${score}`, this.panelX, this.panelY + 22);
